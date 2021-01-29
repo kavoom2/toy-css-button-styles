@@ -1,0 +1,101 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "montserrat", sans-serif;
+    background: #f1f1f1;
+
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    /* Y-axis align */
+    align-items: center;
+    /* X-axis align */
+    justify-content: center;
+}
+
+/* Make a share button shape */
+/* 버튼의 기본형태와 위치를 설정한다. */
+.share-button {
+    width: 280px;
+    height: 80px;
+    background: #dfe6e9;
+    border-radius: 40px;
+
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+    /* Position은 static으로 하지 않도록 한다. 가급적이면 relative */
+    position: relative;
+    cursor: pointer;
+    transition: .3s linear;
+}
+
+/* Hover: onCursor */
+.share-button:hover{
+    transform: scale(1.1);
+}
+
+/* span */
+.share-button span{
+    /* absolute는 부모 중 position:static을 속성으로 갖지 않은 요소를 기준으로 움직인다. */
+    /* 만약에 없으면, body가 기준이 된다. */
+    /* 크기 속성도 부모의 것을 따라간다. 참고하자. */
+    /* https://www.zerocho.com/category/CSS/post/5864f3b59f1dc000182d3ea1 */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #2d3436;
+    color: #f1f1f1;
+    text-align: center;
+    line-height: 80px;
+    /* z-index는 레이어상에 몇 번째에 위치하고 있는지 나타낸다.(포토샵 레이어를 생각하자) */
+    /* position이 지정된 element에 대해서만 작동한다. 값이 클 수록 우선순위가 높다. */
+    /* z-index의 디폴트값은 0이다. */
+    z-index: 999;
+    transition: .6s cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+/* span Hover: onCursor */
+.share-button:hover span{
+    /* Hover 작동 시, X축으로 -100%로 0.6초 동안 이동 */
+    transform: translateX(-100%);
+    /* transition 요청을 받고 0.3s이 지난 후에 애니메이션 재생 */
+    transition-delay: .1s;
+}
+
+.share-button a{
+    /* every element has same flex size */
+    flex: 1;
+    font-size: 26px;
+    color: #2d3436;
+    text-align: center;
+    /* 화면 밖에서 점점 나타나도록 한다. 투명도 0 -> 100%, x축 -100% -> 0으로 이동 */
+    transform: translateX(-100%);    
+    opacity: 0;
+    transition: 0.3s cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+.share-button:hover a{
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* nth-of-type(n): Pseudo class, 해당 되는 children 중 n번째 child를 선택한다. */
+/* index는 1부터 시작한다... */
+.share-button a:nth-of-type(1){
+    transition-delay: 1s;
+}
+
+.share-button a:nth-of-type(2){
+    transition-delay: 0.8s;
+}
+
+.share-button a:nth-of-type(3){
+    transition-delay: 0.6s;
+}
+
+.share-button a:nth-of-type(4){
+    transition-delay: 0.4s;
+}

@@ -1,0 +1,117 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans",sans-serif;
+    /* Remove underline and liststyle */
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    background-color: #30336b;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pricing-table {
+    display: flex;
+    /* flex-wrap은 내부 요소들이 한 줄에 배치되게 할 것인지, 또는 영역 내에 여러 행으로 나누어 표현할 것인지 결정한다. */
+    /* 반응성 웹에서 중요한 요소이다. 공간이 부족하면 자연스럽게 줄바꿈이 일어나도록 한다. */
+    flex-wrap: wrap;
+    justify-content: space-around;
+    /* css의 min함수는 둘 중에 작은 값을 반환한다.  */
+    width: min(1600px, 100%);
+    /* margin auto는 수평방향으로 중앙정렬한다. (상하는 영향을 주지 않는다. 별도로 표기하지 않으면 0으로 적용한다) */
+    /* 상위 container에서 justify-content:center를 적용한 것과 동일하다. 단 IE8, 9를 지원해야하면 margin: auto를 사용해야 한다. */
+    /* margin: auto; */
+}
+
+.pricing-card {
+    flex: 1;
+    max-width: 360px;
+    background-color: #fff;
+    margin: 20px 10px;
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+    color: #2d2d2d;
+    transition: .3s linear;
+}
+
+.pricing-card-header {
+    background-color: #06bcf9;
+    /* inline-block은 해당 위치만 점유한다는 것을 기억하자. 이를 이용한 방법이다. */
+    display: inline-block;
+    padding: 12px 30px;
+    /* 우측상단이 시작점이며 시계방향이다. */
+    border-radius: 0 0 20px 20px;
+
+    font-size: 16px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: .4s linear; 
+}
+
+/* OO에 hover가 작동하면 --> XX의 스타일을 바꾼다. */
+.pricing-card:hover .pricing-card-header{
+    box-shadow: 0 0 0 26em #06bcf9;
+}
+
+.price{
+    font-size: 70px;
+    color: #0fbcf9;
+    margin: 40px 0;
+    transition: .2s linear;
+}
+
+.price sup, .price span{
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.pricing-card:hover .price{
+    color: #fff;
+}
+
+.pricing-card li{
+    font-size: 16px;
+    padding: 10px 0;
+    text-transform: uppercase;
+}
+
+.order-btn{
+    display:inline-block;
+    margin-bottom: 40px;
+    margin-top: 80px;
+    border: 2px solid #0fbcf9;
+    color: #0fbcf9;
+    padding: 18px 40px;
+    border-radius: 8px;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: .3s linear;
+}
+
+.order-btn:hover {
+    background-color: #0fbcf9;
+    color: #fff;
+}
+
+
+
+/* 반응성 웹 적용 */
+/* @media: 특정 장치에서만 CSS스타일을 적용한다. */
+@media screen and (max-width:1100px) {
+    .pricing-card{
+        flex: 50%;
+    }
+}
+
+/* flex 용법 */
+/* flex: 1 1 0 */
+/* flex-grow: 1, flex-shrik: 1, flex-basis:0 이라는 뜻이다.*/
+/* flex:1rem, flex:50%와 같이 단위를 적으면, 이는 flex-basis를 1rem, 50%로 설정하겠다는 것이다. */

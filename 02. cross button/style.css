@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100wh;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2c3a47 ;
+}
+
+.sm a{
+    display: inline-block;
+    font-size: 40px;
+    /* Box Size */
+    /* background-color: white; */
+    width: 100px;
+    height: 100px;
+    /* Line의 높이, 글자의 위치를 변경합니다. */
+    line-height: 100px; 
+    text-align: center;
+
+    color: #6ab04c;
+    margin: 0 16px;
+
+    transition: .4s linear;
+    position:relative;
+}
+
+.sm a::before, .sm a::after {
+    /* content는 Pseudo Class이다   */
+    content: "";
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transition: .4s linear;
+}
+
+.sm a:hover {
+    transform: scale(.8);
+}
+
+/* before는 content 앞에, after는 content 뒤에 장식용 컨텐츠를 추가할 때 사용된다. 여기서는 구분할 필요는 없다. */
+/* 서로 다르게 움직여야 할 요소이므로 나눈 것이다. */
+/* .sm a에 hover가 작동하면 ::before와 ::after의 style이 어떻게 변할지 정의한다. */
+.sm a:hover::before {
+    border-top: 4px solid;
+    border-bottom: 4px solid;
+    transform: skewY(-20deg);
+}
+
+.sm a:hover::after {
+    border-left: 4px solid;
+    border-right: 4px solid;
+    transform: skewX(20deg);
+}
